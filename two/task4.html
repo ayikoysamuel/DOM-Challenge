@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Challenge</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        button {
+            padding: 10px 20px; 
+            margin-top: 20px;
+            cursor: pointer;
+        }   
+        h1 {
+            color: #333;
+        }
+        p {
+            font-size: 1.2em;
+        }
+        #theme-status {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        #theme-toggle {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Theme Switcher</h1>
+    <button id="theme-toggle">Switch Theme</button>
+    <p id="theme-status">Current Theme: Light</p>  
+
+
+    <script>
+            // Select elements
+            const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeStatus = document.getElementById('theme-status');
+
+        // Load theme from localStorage or default to light mode
+        const savedTheme = localStorage.getItem('theme') || 'light-mode';
+        document.body.classList.add(savedTheme);
+        themeStatus.textContent = `Current Theme: ${savedTheme === 'light-mode' ? 'Light' : 'Dark'}`;
+
+        // Toggle theme on button click
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = document.body.classList.contains('light-mode') ? 'light-mode' : 'dark-mode';
+            const newTheme = currentTheme === 'light-mode' ? 'dark-mode' : 'light-mode';
+
+            // Update body class and text
+            document.body.classList.remove(currentTheme);
+            document.body.classList.add(newTheme);
+            themeStatus.textContent = `Current Theme: ${newTheme === 'light-mode' ? 'Light' : 'Dark'}`;
+
+            // Save the new theme in localStorage
+            localStorage.setItem('theme', newTheme);
+        });
+        
+    </script>
+
+   
+</body>
+</html>

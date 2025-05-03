@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Challenge </title>
+    <style>
+        .carousel {
+            position: relative;
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .carousel img {
+            width: 100%;
+            display: none;
+        }
+        .carousel img.active {
+            display: block;
+        }
+        .btn {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .btn button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .btn button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Carousel</h1>
+
+    <div class="carousel">
+        <img src="images/pexels-achim-bongard-87217-352096.jpg" alt="img 1" class="active">
+        <img src="images/pexels-asadphoto-3293148.jpg" alt="img 2">
+        <img src="images/pexels-david-besh-884788.jpg" alt="img 3">
+        <img src="images/pexels-kqpho-1583582.jpg" alt="img 4">
+
+        <div class="btn">
+            <button class="prev">Previous</button>
+            <button class="next">Next</button>
+        </div>
+    </div>
+    
+    <script>
+        const images = document.querySelectorAll('.carousel img');
+        const prevButton = document.querySelector('.prev');
+        const nextButton = document.querySelector('.next');
+        let currentIndex = 0;
+
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.toggle('active', i === index);
+            });
+        }
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        });
+    </script>
+</body>
+</html>

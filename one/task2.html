@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Challenges.</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            border: 1px solid #ccc;
+            margin: 10px auto;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 10px;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        h3 {
+            color: #2980b9;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+   <h1>DOM Challenge 2.</h1>
+   <h3>Click Counter</h3>
+    <p>Click the button below to increase the counter.</p>
+     
+    <button id="btn">Click Here!</button>
+    <p id="counter">0</p>
+
+    <script>
+        let count = 0;
+        const button = document.getElementById('btn');
+        const counterDisplay = document.getElementById('counter');
+
+        button.addEventListener('click', () => {
+            count++;
+            counterDisplay.textContent = count;
+        });
+    </script>
+</body>
+</html>

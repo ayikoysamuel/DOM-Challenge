@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Challenge 4</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #97cbae;
+            margin: 0;
+            padding: 20px;
+            justify-items: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1,h2 {
+            color: #28444d;
+        }
+        textarea {
+            width: 50%;
+            height: 100px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        p {
+            font-size: 16px;
+            color: #28444d;
+        }
+        #charCount {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        textarea:focus {
+            border-color: #576164;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>DOM Challenge 4</h1>
+    <h2>Real Time Character Counter</h2>
+    <textarea id="textArea" maxlength="200" placeholder="Type Here ................."></textarea>
+    <p id="charCount">Characters left: 200</p>
+
+
+
+    <script>
+        const textArea = document.getElementById('textArea');
+        const charCount = document.getElementById('charCount');
+
+        textArea.addEventListener('input', function() {
+            const remainingChars = 200 - textArea.value.length;
+            charCount.textContent = `Characters left: ${remainingChars}`;
+        });
+    </script>
+</body>
+</html>

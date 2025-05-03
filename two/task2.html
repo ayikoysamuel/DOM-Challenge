@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Challenge</title>
+</head>
+<body>
+    <h1>Dom Challenge </h1>
+    <h2>A searchbar to filter rows base don user input</h2>
+    
+    <!--html searchbar,table-->
+    <input type="text" id="searchBar" placeholder="Search for names..." onkeyup="tableFilter()">
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Cohort</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Sam Bolton</td>
+                <td>22</td>
+                <td>New York</td>
+            </tr>
+
+            <tr>
+                <td>Bruce Lincolin</td>
+                <td>26</td>
+                <td>Geneva</td>
+            </tr>
+
+            <tr>
+                <td>James Brown</td>
+                <td>25</td>
+                <td>New Jersey</td>
+            </tr>
+
+            <tr>
+                <td>Thomas Shelby</td>
+                <td>21</td>
+                <td>Houston</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <script>
+ // Function to filter table rows based on search input
+ function tableFilter() {
+    const input = document.getElementById('searchBar');
+    const filter = input.value.toLowerCase();
+    const table = document.querySelector('table');
+    const rows = table.getElementsByTagName('tr');
+
+    // Loop through all table rows, except the first (header row)
+    for (let i = 1; i < rows.length; i++) {
+        const row = rows[i].getElementsByTagName('td');
+        let match = false;
+
+        // Loop through each cell in the row
+        for (let j = 0; j < row.length; j++) {
+            const cell = row[j];
+            if (cell && cell.textContent.toLowerCase().indexOf(filter) > -1) {
+                match = true;
+                break; // Stop searching if a match is found
+            }
+        }
+        rows[i].style.display = match ? '' : 'none'; // Show or hide the row based on match
+    }
+ }
+
+    </script>
+</body>
+</html>
